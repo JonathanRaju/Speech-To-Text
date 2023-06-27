@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
-  useSpeechRecognition
+  useSpeechRecognition,
 } from "react-speech-recognition";
 
 const SpeechToText = () => {
@@ -10,7 +10,7 @@ const SpeechToText = () => {
       callback: () =>
         setData(
           `The useState() is a Hook that allows you to have state variables in functional components . so basically useState is the ability to encapsulate local state in a functional component. React has two types of components, one is class components which are ES6 classes that extend from React and the other is functional components. Class components a Component and can have state and lifecycle methods: class Message extends React. The  useState hook is a special function that takes the initial state as an argument and returns an array of two entries.  UseState encapsulate only singular value from the state, for multiple state need to have useState calls.`
-        )
+        ),
     },
     {
       command: "class and functional difference",
@@ -22,7 +22,7 @@ const SpeechToText = () => {
         The class component is instantiated and different life cycle method is kept alive and is run and invoked depending on the phase of the class component.     
       
       `
-        )
+        ),
     },
     {
       command: "features of react",
@@ -34,18 +34,13 @@ const SpeechToText = () => {
         4. One-way data-binding: React’s one-way data binding keeps everything modular and fast. A unidirectional data flow means that when designing a React app, you often nest child components within parent components.
         5. High performance: React updates only those components that have changed, rather than updating all the components at once. This results in much faster web applications.
         `
-        )
-    }
+        ),
+    },
   ];
-  const {
-    listening,
-    browserSupportsContinuousListening
-  } = useSpeechRecognition();
-  const {
-    transcript,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition({ commands });
+  const { listening, browserSupportsContinuousListening } =
+    useSpeechRecognition();
+  const { transcript, resetTranscript, browserSupportsSpeechRecognition } =
+    useSpeechRecognition({ commands });
 
   const [text, setText] = useState("");
   const [data, setData] = useState("");
@@ -66,12 +61,12 @@ const SpeechToText = () => {
           margin: "10px",
           border: "none",
           background: "green",
-          color: "#fff"
+          color: "#fff",
         }}
         onClick={() =>
           SpeechRecognition.startListening({
             continuous: true,
-            language: "en-IN"
+            language: "en-IN",
           })
         }
       >
@@ -85,7 +80,7 @@ const SpeechToText = () => {
           margin: "10px",
           border: "none",
           background: "red",
-          color: "#fff"
+          color: "#fff",
         }}
       >
         Stop
@@ -98,7 +93,7 @@ const SpeechToText = () => {
           margin: "10px",
           border: "none",
           background: "yellow",
-          color: "#000"
+          color: "#000",
         }}
       >
         Reset
@@ -108,10 +103,12 @@ const SpeechToText = () => {
       <p>{transcript}</p>
 
       <p>{data}</p>
-      <div style={{ position: "absolute", bottom: "10%", left: "10%" }}>
+      <div>
         <textarea
+          value={data}
+          style={{ width: "100%" }}
           rows="8"
-          cols="100"
+          cols="10"
           onChange={(e) => setText(e.target.value)}
         />
         <div>
@@ -122,7 +119,7 @@ const SpeechToText = () => {
               margin: "10px",
               border: "none",
               background: "lightgreen",
-              color: "#000"
+              color: "#000",
             }}
             onClick={() => setData(text)}
           >
@@ -135,7 +132,7 @@ const SpeechToText = () => {
               margin: "10px",
               border: "none",
               background: "red",
-              color: "#fff"
+              color: "#fff",
             }}
             onClick={() => setData("")}
           >
