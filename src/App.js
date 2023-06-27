@@ -14,7 +14,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Speech To Text</h1>
-      <Router>
+      {/* <Router>
         <Routes>
           <Route
             exact
@@ -27,7 +27,8 @@ export default function App() {
             element={<Child transcript={trans} message={text} />}
           ></Route>
         </Routes>
-      </Router>
+      </Router> */}
+      <SpeechToText getdata={getdata} />
     </div>
   );
 }
